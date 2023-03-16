@@ -69,16 +69,33 @@ public class Inventory {
 		while (true) {
 			printItemList();
 			System.out.println("[골드 : " + Player.money + "]");
+			if(itemList.size()>0) {
 			System.out.println("판매할 아이템 번호를 입력하세요. (50 % 세금) [0.뒤로가기]");
 			int selSell = MainGame.scan.nextInt();
-			System.out.println(itemList.get(selSell - 1).name + "을 판매합니다.");
+			if (selSell > 0 && selSell<=itemList.size()) {
+				System.out.println(itemList.get(selSell - 1).name + "을 판매합니다.");
+			}else if(selSell == 0) {
+				break;
+			}else {
+				System.out.println("잘못 입력하셨습니다.");
+			}
+			Player.money += (itemList.get(selSell - 1).price / 2);
+			itemList.remove(selSell - 1);
+			}else {
+				System.out.println("소유하고 있는 아이템이 없습니다.");
+				try {
+					Thread.sleep(1000);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				break;
+			}
 			try {
 				Thread.sleep(1000);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			Player.money += (itemList.get(selSell - 1).price / 2);
-			itemList.remove(selSell - 1);
+			
 		}
 	}
 

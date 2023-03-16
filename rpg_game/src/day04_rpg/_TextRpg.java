@@ -8,34 +8,81 @@ class MainGame {
 	static Scanner scan = new Scanner(System.in);
 	static Random ran = new Random();
 
+	
+	public String printGameMenu() {
+		String str = "";
+		if(!Player.log.equals("-1")) {
+			str = "마이페이지";
+		} else {
+			str = "아이디생성 및 캐릭터생성";
+		}
+		System.out.println("=============== [메인메뉴] ================");
+		System.out.printf("[1.%s]\n[2.길드관리]\n[3.상점]\n[4.인벤토리]\n[5.저장]\n[6.로드]\n[0.종료\n",str);
+		System.out.println("========================================");
+		System.out.print("메뉴입력 : ");
+		return str;
+	}
+	
+	public void createUser() {
+		System.out.print("캐릭터 아이디 : ");
+		String playerId = scan.next();
+		System.out.print("캐릭터 패스워드 : ");
+		String playerPw = scan.next();
+		System.out.print("캐릭터 이름: ");
+		String playerName = scan.next();
+		Unit temp = new Unit(playerName, 1, 120, 7,  11, 0);
+		Player.id = playerId;
+		Player.pw = playerPw;
+		Player.user = temp;
+		Player.log = playerId;
+	}
+	
+	public void myPage() {
+		System.out.println("=========================================");
+		System.out.println("[Id : " + Player.id + "]");
+		System.out.println("============= [마이페이지] ================");
+			System.out.println(" [이름 : " + Player.user.name + "]");
+			System.out.println(" [레벨 : " + Player.user.level + "]");
+			System.out.print(" [체력 : " + Player.user.hp);
+			System.out.println(" / " + Player.user.maxHp + "]");
+			System.out.println(" [공격력 : " + Player.user.att + "]");
+			System.out.println(" [방어력 : " + Player.user.def + "]");
+			System.out.println("=========================================");
+	}
+	
 	public MainGame() {
 		Player player = new Player();
 		Shop shop = new Shop();
 		FileData fileData = new FileData();
 		while (true) {
-			System.out.println("=============== [메인메뉴] ================");
-			System.out.println("[1.길드관리] [2.상점] [3.인벤토리]");
-			System.out.println("[4.저장] [5.로드] [0.종료]");
+			String str = printGameMenu();
 			int sel = scan.nextInt();
 			if (sel == 1) {
-				player.guildMenu();
+				if(str.equals("마이페이지")) {
+					myPage();
+				} else {
+					createUser();
+				}
 			} else if (sel == 2) {
-				shop.shopMng();
+				player.guildMenu();
 			} else if (sel == 3) {
-				player.inventoryMenu();
+				shop.shopMng();
 			} else if (sel == 4) {
+				player.inventoryMenu();
+			} else if (sel == 5) {
 				try {
 					fileData.save();
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
-			} else if (sel == 5) {
+			} else if(sel == 6){
 				try {
 					fileData.loadData();
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
-			} else {
+			}
+			else {
 				System.out.println("게임을 종료 합니다.");
 				break;
 			}

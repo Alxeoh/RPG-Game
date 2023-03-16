@@ -117,7 +117,7 @@ public class FileData {
 			System.out.println(Player.money);
 			String guildSize = br.readLine();
 			int size = Integer.parseInt(guildSize);
-			Player.guild.guildList.clear();
+			Player.guild.guildUnitList.clear();
 			System.out.println(size);
 			for (int i = 0; i < size; i++) {
 				String unitData = br.readLine();
@@ -130,7 +130,7 @@ public class FileData {
 				int exp = Integer.parseInt(unitArr[5]);
 				boolean party = Boolean.parseBoolean(unitArr[6]);
 				Unit temp = new Unit(name, level, maxhp, att, def, exp, party);
-				Player.guild.guildList.add(temp);
+				Player.guild.guildUnitList.add(temp);
 				// ==================== item =======================
 				String itemData = br.readLine();
 				String itemArr[] = itemData.split("/");

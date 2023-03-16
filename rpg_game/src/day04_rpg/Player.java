@@ -3,40 +3,49 @@ package day04_rpg;
 import java.util.ArrayList;
 
 public class Player {
+	static String myGuild;
+	static String log;
+	static String id;
+	static String pw;
 	static int money;
+	static Unit user;
 	static Guild guild = new Guild();
+	static AllGuild AllGuild = new AllGuild();
 	static Inventory inven = new Inventory();
 
 	Player() {
-		money = 100000;
-		guild.setGuild();
+		Player.myGuild = "-1";
+		Player.money = 1500;
+		Player.guild.setGuild();
+		Player.log = "-1";
 	}
 
 	public void guildMenu() {
-		guild.guildMenu();
+		Player.guild.guildMenu();
 	}
 
 	public void inventoryMenu() {
-		inven.inventoryMenu();
+		Player.inven.inventoryMenu();
 	}
 
 	static public ArrayList<Unit> getGuildList() {
-		return guild.guildList;
+		return Player.guild.guildUnitList;
 	}
 
 	static public ArrayList<Item> getItemList() {
-		return inven.itemList;
+		return Player.inven.itemList;
 	}
 
 	static public Unit getGuildUnit(int num) {
-		return guild.getGuildUnit(num);
+		return Player.guild.getGuildUnit(num);
 	}
 
 	static public int getGuildSize() {
-		return guild.guildList.size();
+		return Player.guild.guildUnitList.size();
 	}
 
 	static public int getItemSize() {
-		return inven.itemList.size();
+		return Player.inven.itemList.size();
 	}
+	
 }
