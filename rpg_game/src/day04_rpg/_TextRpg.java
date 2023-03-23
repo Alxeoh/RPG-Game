@@ -8,21 +8,20 @@ class MainGame {
 	static Scanner scan = new Scanner(System.in);
 	static Random ran = new Random();
 
-	
 	public String printGameMenu() {
 		String str = "";
-		if(!Player.log.equals("-1")) {
+		if (!Player.log.equals("100")) {
 			str = "마이페이지";
 		} else {
 			str = "아이디생성 및 캐릭터생성";
 		}
-		System.out.println("=============== [메인메뉴] ================");
-		System.out.printf("[1.%s]\n[2.길드관리]\n[3.상점]\n[4.인벤토리]\n[5.저장]\n[6.로드]\n[0.종료\n",str);
-		System.out.println("========================================");
+		System.out.println("================= [메인메뉴] ====================");
+		System.out.printf("[1.%s]\n[2.길드관리]\n[3.상점]\n[4.인벤토리]\n[5.사냥]\n[6.저장]\n[7.로드]\n[0.종료]\n", str);
+		System.out.println("===============================================");
 		System.out.print("메뉴입력 : ");
 		return str;
 	}
-	
+
 	public void createUser() {
 		System.out.print("캐릭터 아이디 : ");
 		String playerId = scan.next();
@@ -30,35 +29,30 @@ class MainGame {
 		String playerPw = scan.next();
 		System.out.print("캐릭터 이름: ");
 		String playerName = scan.next();
-		Unit temp = new Unit(playerName, 1, 120, 7,  11, 0);
+		Unit temp = new Unit(playerName, 1, 120, 120, 7, 11, 0, true, false, false, false, false, false, false, false,
+				false, false);
 		Player.id = playerId;
 		Player.pw = playerPw;
 		Player.user = temp;
 		Player.log = playerId;
+		System.out.printf("[%s님 환영합니다.]\n", playerName);
 	}
-	
+
 	public void myPage() {
-		System.out.println("=========================================");
-		System.out.println("[Id : " + Player.id + "]");
-		System.out.println("============= [마이페이지] ================");
-			System.out.println(" [이름 : " + Player.user.name + "]");
-			System.out.println(" [레벨 : " + Player.user.level + "]");
-			System.out.print(" [체력 : " + Player.user.hp);
-			System.out.println(" / " + Player.user.maxHp + "]");
-			System.out.println(" [공격력 : " + Player.user.att + "]");
-			System.out.println(" [방어력 : " + Player.user.def + "]");
-			System.out.println("=========================================");
+		Player.user.printStatus();
+		Player.user.printEquitedItem();
 	}
-	
+
 	public MainGame() {
 		Player player = new Player();
 		Shop shop = new Shop();
 		FileData fileData = new FileData();
+		Hunt hunt = new Hunt();
 		while (true) {
 			String str = printGameMenu();
 			int sel = scan.nextInt();
 			if (sel == 1) {
-				if(str.equals("마이페이지")) {
+				if (!Player.log.equals("100")) {
 					myPage();
 				} else {
 					createUser();
@@ -70,21 +64,24 @@ class MainGame {
 			} else if (sel == 4) {
 				player.inventoryMenu();
 			} else if (sel == 5) {
+				hunt.huntMenu();
+			} else if (sel == 6) {
 				try {
 					fileData.save();
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
-			} else if(sel == 6){
+			} else if (sel == 7) {
 				try {
 					fileData.loadData();
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
-			}
-			else {
+			} else if (sel == 0) {
 				System.out.println("게임을 종료 합니다.");
 				break;
+			} else {
+				System.out.println("없는 메뉴입니다.");
 			}
 		}
 		MainGame.scan.close();

@@ -4,48 +4,53 @@ import java.util.ArrayList;
 
 public class Player {
 	static String myGuild;
+	static boolean mine;
 	static String log;
 	static String id;
 	static String pw;
 	static int money;
 	static Unit user;
 	static Guild guild = new Guild();
-	static AllGuild AllGuild = new AllGuild();
 	static Inventory inven = new Inventory();
 
 	Player() {
-		Player.myGuild = "-1";
-		Player.money = 1500;
-		Player.guild.setGuild();
-		Player.log = "-1";
+		Player.mine = false;
+		Player.myGuild = "100";
+		Player.money = 25000;
+		Player.guild.setParty();
+		Player.log = "100";
 	}
 
 	public void guildMenu() {
-		Player.guild.guildMenu();
+		if(!Player.log.equals("100")) {
+			Player.guild.guildMenu();
+		} else {
+			System.out.println("캐릭터생성을 먼저 해주세요.");
+		}
 	}
 
 	public void inventoryMenu() {
-		Player.inven.inventoryMenu();
+		if(!Player.log.equals("100")) {
+			Player.inven.inventoryMenu();
+		} else {
+			System.out.println("캐릭터생성을 먼저 해주세요.");
+		}
 	}
-
-	static public ArrayList<Unit> getGuildList() {
-		return Player.guild.guildUnitList;
+	
+	static public ArrayList<Item> getPotionList() {
+		return Player.inven.PotionList;
 	}
-
+	
 	static public ArrayList<Item> getItemList() {
-		return Player.inven.itemList;
-	}
-
-	static public Unit getGuildUnit(int num) {
-		return Player.guild.getGuildUnit(num);
-	}
-
-	static public int getGuildSize() {
-		return Player.guild.guildUnitList.size();
+		return Player.inven.MyitemList;
 	}
 
 	static public int getItemSize() {
-		return Player.inven.itemList.size();
+		return Player.inven.MyitemList.size();
+	}
+	
+	static public int getPotionSize() {
+		return Player.inven.PotionList.size();
 	}
 	
 }
