@@ -39,8 +39,8 @@ class MainGame {
 	}
 
 	public void myPage() {
-		Player.user.printStatus();
-		Player.user.printEquitedItem();
+		Guild.allGuild.guildList.get(Guild.myGuild).member.memberUnit.get(0).printStatus();
+		Guild.allGuild.guildList.get(Guild.myGuild).member.memberUnit.get(0).printEquitedItem();
 	}
 
 	public MainGame() {

@@ -200,7 +200,7 @@ public class Inventory {
 		if (sel == 1) {
 			if (MyitemList.size() > 0) {
 				System.out.println("=============== [플레이어 장비현황] =================");
-				Player.user.printEquitedItem();
+				Guild.allGuild.guildList.get(Guild.myGuild).member.memberUnit.get(0).printEquitedItem();
 				printItemList();
 				System.out.println("착용할 아이템 번호를 입력하세요 [0.뒤로가기]");
 				int selEquip = MainGame.scan.nextInt();
@@ -210,7 +210,7 @@ public class Inventory {
 					System.out.println("없는 아이템번호 입니다. ");
 				} else {
 					String temp = MyitemList.get(selEquip - 1).name;
-					if (Player.user.level >= MyitemList.get(selEquip - 1).level) {
+					if (Guild.allGuild.guildList.get(Guild.myGuild).member.memberUnit.get(0).level >= MyitemList.get(selEquip - 1).level) {
 						if (!Player.myGuild.equals("-1")) {
 							Unit player = Guild.allGuild.guildList.get(Guild.myGuild).member.memberUnit.get(0);
 							int kindNum = MyitemList.get(selEquip - 1).kind;

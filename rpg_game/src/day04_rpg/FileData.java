@@ -91,6 +91,8 @@ public class FileData {
 						weaponData += item.power;
 						weaponData += ",";
 						weaponData += item.price;
+						weaponData += ",";
+						weaponData += item.level;
 						gameData += weaponData;
 
 					}
@@ -107,6 +109,8 @@ public class FileData {
 						weaponData += item.power;
 						weaponData += ",";
 						weaponData += item.price;
+						weaponData += ",";
+						weaponData += item.level;
 						gameData += weaponData;
 
 					}
@@ -123,6 +127,8 @@ public class FileData {
 						weaponData += item.power;
 						weaponData += ",";
 						weaponData += item.price;
+						weaponData += ",";
+						weaponData += item.level;
 						gameData += weaponData;
 					}
 					gameData += "\r\n";

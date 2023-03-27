@@ -153,9 +153,21 @@ public class Unit {
 		} else {
 			System.out.print(" [체력 : " + this.hp);
 		}
-		System.out.println(" / " + this.maxHp + "]");
-		System.out.print("[공격력 : " + this.att + "]");
-		System.out.print(" [방어력 : " + this.def + "]");
+		if(this.ring != null) {
+			System.out.println(" / " + this.maxHp + " + "+ this.ring.power +  "]");
+		} else {
+			System.out.println(" / " + this.maxHp+ "]");
+		}
+		if(this.weapon != null) {
+			System.out.print("[공격력 : " + this.att + " + "+ this.weapon.power + "]");
+		} else {
+			System.out.print("[공격력 : " + this.att + "]");
+		}
+		if(this.armor != null) {
+			System.out.print(" [방어력 : " + this.def + " + "+ this.armor.power + "]");
+		} else {
+			System.out.print(" [방어력 : " + this.def + "]");
+		}
 		System.out.println(" [파티중 : " + this.party + "]");
 	}
 
