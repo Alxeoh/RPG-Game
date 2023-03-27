@@ -13,10 +13,9 @@ public class FileData {
 		String path = "gameData.txt";
 
 		fout = new FileWriter(path);
-		if (Player.myGuild.equals("-1")) {
-			String gameData = "";
+		if (Player.myGuild.equals("100")) {
+			System.out.println("[길드가 없는 플레이어의 기록은 저장되지 않습니다]");
 		} else {
-
 			String gameData = "";
 
 			gameData += Guild.allGuild.guildList.size()+"";
