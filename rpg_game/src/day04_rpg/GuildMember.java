@@ -61,10 +61,22 @@ public class GuildMember {
 					System.out.print(" [체력 : [사망]");
 				}else {
 					System.out.print(" [체력 : " + this.memberUnit.get(i).hp);
+					if(this.memberUnit.get(i).ring != null) {
+						System.out.println(" / " + this.memberUnit.get(i).maxHp + " + "+ this.memberUnit.get(i).ring.power +  "]");
+					} else {
+						System.out.println(" / " + this.memberUnit.get(i).maxHp+ "]");
+					}
 				}
-				System.out.println(" / " + this.memberUnit.get(i).maxHp + "]");
-				System.out.print("[공격력 : " + this.memberUnit.get(i).att + "]");
-				System.out.print(" [방어력 : " + this.memberUnit.get(i).def + "]");
+				if(this.memberUnit.get(i).weapon != null) {
+					System.out.print("[공격력 : " + this.memberUnit.get(i).att + " + "+ this.memberUnit.get(i).weapon.power + "]");
+				} else {
+					System.out.print("[공격력 : " + this.memberUnit.get(i).att + "]");
+				}
+				if(this.memberUnit.get(i).armor != null) {
+					System.out.print(" [방어력 : " + this.memberUnit.get(i).def + " + "+ this.memberUnit.get(i).armor.power + "]");
+				} else {
+					System.out.print(" [방어력 : " + this.memberUnit.get(i).def + "]");
+				}
 				System.out.println(" [파티중 : " + this.memberUnit.get(i).party + "]");
 			}
 		}
@@ -79,10 +91,23 @@ public class GuildMember {
 			System.out.print(" [체력 : [사망]");
 		}else {
 			System.out.print(" [체력 : " + this.memberUnit.get(0).hp);
+			if(this.memberUnit.get(0).ring != null) {
+				System.out.println(" / " + this.memberUnit.get(0).maxHp + " + "+ this.memberUnit.get(0).ring.power +  "]");
+			} else {
+				System.out.println(" / " + this.memberUnit.get(0).maxHp+ "]");
+			}
 		}
-		System.out.println(" / " + this.memberUnit.get(0).maxHp + "]");
-		System.out.print("[공격력 : " + this.memberUnit.get(0).att + "]");
-		System.out.print(" [방어력 : " + this.memberUnit.get(0).def + "]");
+		
+		if(this.memberUnit.get(0).weapon != null) {
+			System.out.print("[공격력 : " + this.memberUnit.get(0).att + " + "+ this.memberUnit.get(0).weapon.power + "]");
+		} else {
+			System.out.print("[공격력 : " + this.memberUnit.get(0).att + "]");
+		}
+		if(this.memberUnit.get(0).armor != null) {
+			System.out.print(" [방어력 : " + this.memberUnit.get(0).def + " + "+ this.memberUnit.get(0).armor.power + "]");
+		} else {
+			System.out.print(" [방어력 : " + this.memberUnit.get(0).def + "]");
+		}
 		System.out.println(" [파티중 : " + this.memberUnit.get(0).party + "]");
 	}
 	
@@ -99,10 +124,23 @@ public class GuildMember {
 					System.out.print(" [체력 : [사망]");
 				}else {
 					System.out.print(" [체력 : " + this.memberUnit.get(i).hp);
+					if(this.memberUnit.get(i).ring != null) {
+						System.out.println(" / " + this.memberUnit.get(i).maxHp + " + "+ this.memberUnit.get(i).ring.power +  "]");
+					} else {
+						System.out.println(" / " + this.memberUnit.get(i).maxHp+ "]");
+					}
 				}
-				System.out.println(" / " + this.memberUnit.get(i).maxHp + "]");
-				System.out.print("[공격력 : " + this.memberUnit.get(i).att + "]");
-				System.out.print(" [방어력 : " + this.memberUnit.get(i).def + "]");
+				
+				if(this.memberUnit.get(i).weapon != null) {
+					System.out.print("[공격력 : " + this.memberUnit.get(i).att + " + "+ this.memberUnit.get(i).weapon.power + "]");
+				} else {
+					System.out.print("[공격력 : " + this.memberUnit.get(i).att + "]");
+				}
+				if(this.memberUnit.get(i).armor != null) {
+					System.out.print(" [방어력 : " + this.memberUnit.get(i).def + " + "+ this.memberUnit.get(i).armor.power + "]");
+				} else {
+					System.out.print(" [방어력 : " + this.memberUnit.get(i).def + "]");
+				}
 				if(this.memberUnit.get(i).party == true) {
 					System.out.print(" [경험치 : " + this.memberUnit.get(i).exp + " + " + exp +"]");
 				}else {
