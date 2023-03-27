@@ -10,31 +10,38 @@ public class GuildMember {
 			System.out.println("=============== [길드원 hp현황] ==================");
 			System.out.print("[1. 길드장]");
 			System.out.print(" [이름 : " + this.memberUnit.get(0).name + "]");
-			System.out.print(" [레벨 : " + this.memberUnit.get(0).level + "]");
+			System.out.println(" [레벨 : " + this.memberUnit.get(0).level + "]");
 			if(this.memberUnit.get(0).hp<=0) {
 				this.memberUnit.get(0).hp = 0;
 				System.out.print(" [체력 : [사망]");
 			}else {
 				System.out.print(" [체력 : " + this.memberUnit.get(0).hp);
+				if(this.memberUnit.get(0).ring != null) {
+					System.out.print(" / " + this.memberUnit.get(0).maxHp + " + "+ this.memberUnit.get(0).ring.power +  "]");
+				} else {
+					System.out.print(" / " + this.memberUnit.get(0).maxHp+ "]");
+				}
 			}
-			System.out.print(" / " + this.memberUnit.get(0).maxHp + "]");
 			System.out.println(" [파티중 : " + this.memberUnit.get(0).party + "]");
 			for(int i = 1; i< this.memberUnit.size();i++) {
 				System.out.print("[" + (i+1) + ". 길드원]");
 				System.out.print(" [이름 : " + this.memberUnit.get(i).name + "]");
-				System.out.print(" [레벨 : " + this.memberUnit.get(i).level + "]");
+				System.out.println(" [레벨 : " + this.memberUnit.get(i).level + "]");
 				if(this.memberUnit.get(i).hp<=0) {
 					this.memberUnit.get(i).hp = 0;
 					System.out.print(" [체력 : [사망]");
 				}else {
 					System.out.print(" [체력 : " + this.memberUnit.get(i).hp);
+					if(this.memberUnit.get(i).ring != null) {
+						System.out.print(" / " + this.memberUnit.get(i).maxHp + " + "+ this.memberUnit.get(i).ring.power +  "]");
+					} else {
+						System.out.print(" / " + this.memberUnit.get(i).maxHp+ "]");
+					}
 				}
-				System.out.print(" / " + this.memberUnit.get(i).maxHp + "]");
 				System.out.println(" [파티중 : " + this.memberUnit.get(i).party + "]");
 			}
 		}
 	}
-	
 	public void printMyHp() {
 		System.out.println("=============== [플레이어 hp현황] =================");
 		System.out.print(" [이름 : " + Player.user.name + "]");

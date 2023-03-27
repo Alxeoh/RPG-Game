@@ -80,8 +80,12 @@ public class Inventory {
 						System.out.println("사망한 인원은 '빨간포션'으로 먼저 살려야 합니다.");
 					} else {
 						Player.user.hp += heal;
-						if (Player.user.hp >= Player.user.maxHp) {
-							Player.user.hp = Player.user.maxHp;
+						int itemPower = 0;
+						if(Player.user.ring != null) {
+							itemPower = Player.user.ring.power; 
+						}
+						if (Player.user.hp >= Player.user.maxHp + itemPower) {
+							Player.user.hp = Player.user.maxHp + itemPower;
 						}
 						System.out.println("포션사용 완료");
 						Player.user.party = true;
@@ -93,12 +97,16 @@ public class Inventory {
 						System.out.println("사망한 인원은 '빨간포션'으로 먼저 살려야 합니다.");
 					} else {
 						Guild.allGuild.guildList.get(Guild.myGuild).member.memberUnit.get(selUnit).hp += heal;
+						int itemPower = 0;
+						if(Guild.allGuild.guildList.get(Guild.myGuild).member.memberUnit.get(selUnit).ring != null) {
+							itemPower = Guild.allGuild.guildList.get(Guild.myGuild).member.memberUnit.get(selUnit).ring.power;
+						}
 						if (Guild.allGuild.guildList.get(Guild.myGuild).member.memberUnit
 								.get(selUnit).hp >= Guild.allGuild.guildList.get(Guild.myGuild).member.memberUnit
-										.get(selUnit).maxHp) {
+										.get(selUnit).maxHp + itemPower) {
 							Guild.allGuild.guildList.get(Guild.myGuild).member.memberUnit
 									.get(selUnit).hp = Guild.allGuild.guildList.get(Guild.myGuild).member.memberUnit
-											.get(selUnit).maxHp;
+											.get(selUnit).maxHp + itemPower;
 						}
 						System.out.println("포션사용 완료");
 						Guild.allGuild.guildList.get(Guild.myGuild).member.memberUnit.get(selUnit).party = true;
@@ -144,6 +152,7 @@ public class Inventory {
 				MyitemList.add(unit.ring);
 			}
 			unit.ring = MyitemList.get(selEquip);
+			unit.hp = unit.maxHp + MyitemList.get(selEquip).power;
 		}
 		MyitemList.remove(selEquip);
 	}
