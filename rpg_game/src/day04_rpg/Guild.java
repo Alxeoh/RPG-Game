@@ -313,7 +313,7 @@ public class Guild {
 			}
 			System.out.println("[길드탈퇴 완료]");
 			System.out.println(allGuild.guildList.get(Guild.myGuild).user);
-			Player.myGuild = "-1";
+			Player.myGuild = "100";
 		} else {
 			System.out.println("소속된 길드가 없습니다.");
 		}
